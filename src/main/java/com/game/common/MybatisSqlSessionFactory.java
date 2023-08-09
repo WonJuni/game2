@@ -16,7 +16,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.game.mapper.BoardInfoMapper;
+import com.game.mapper.TestInfoMapper;
+import com.game.mapper.UserInfoMapper;
 import com.game.vo.BoardInfoVO;
+import com.game.vo.TestInfoVO;
+import com.game.vo.UserInfoVO;
 
 public class MybatisSqlSessionFactory {
 	private static SqlSessionFactory SSF;
@@ -38,18 +42,11 @@ public class MybatisSqlSessionFactory {
 	}
 
 	public static void main(String[] args) {
-		SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
-		SqlSession sqlSession = null;
-		try {
-			sqlSession = SSF.openSession(true);
-			BoardInfoMapper boardInfoMapper = sqlSession.getMapper(BoardInfoMapper.class);
-			BoardInfoVO boardInfoVO = new BoardInfoVO();
-			
-			System.out.println(boardInfoMapper.selectBoardInfoList(boardInfoVO));
-			
-
-		} catch (Exception e) {
-		}
+	 SqlSessionFactory ssf = getSqlSessionFactory();
+	 SqlSession session = ssf.openSession();
+	 TestInfoMapper testInfoMapper = session.getMapper(TestInfoMapper.class);
+	 List<TestInfoVO> list = testInfoMapper.selectTestInfoList(null);
+	 System.out.println(list);
 	}
 
 }

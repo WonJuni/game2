@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.game.common.CommonView;
 import com.game.service.BoardInfoService;
 import com.game.service.impl.BoardInfoServiceImpl;
+import com.game.vo.BoardInfoVO;
 
 
 @WebServlet("/board-info/*")
@@ -40,11 +41,11 @@ public class BoardInfoServlet extends HttpServlet {
 				searchMap = new HashMap<>();
 				searchMap.put("key", request.getParameter("searchtype"));
 				searchMap.put("value", request.getParameter("searchStr"));
-				request.setAttribute("boardInfoList",BOARD_INFO_SERVICE.boardInfoList(searchMap));
-				System.out.println(BOARD_INFO_SERVICE.boardInfoList(searchMap));
+				request.setAttribute("boardInfoList",BOARD_INFO_SERVICE.boardInfoList((BoardInfoVO) searchMap));
+				System.out.println(BOARD_INFO_SERVICE.boardInfoList( (BoardInfoVO) searchMap));
 			}
-				request.setAttribute("boardInfoList",BOARD_INFO_SERVICE.boardInfoList(searchMap));
-				System.out.println(BOARD_INFO_SERVICE.boardInfoList(searchMap));
+				request.setAttribute("boardInfoList",BOARD_INFO_SERVICE.boardInfoList( (BoardInfoVO) searchMap));
+				System.out.println(BOARD_INFO_SERVICE.boardInfoList( (BoardInfoVO) searchMap));
 			
 		}else if ("view".equals(cmd)||"update".equals(cmd)) {
 			System.out.println(userInfo.get("uiNum"));

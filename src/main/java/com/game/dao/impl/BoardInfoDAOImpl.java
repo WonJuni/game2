@@ -23,24 +23,24 @@ public class BoardInfoDAOImpl implements BoardInfoDAO {
 		if (boardInfo != null) {
 			String key = boardInfo.get("key");
 			if ("1".equals(key)) {
-				sql += " OR BI_TITLE LIKE CONCAT('%',?,'%')";
+				sql += " AND BI_TITLE LIKE CONCAT('%',?,'%')";
 			} else if ("2".equals(key)) {
-				sql += " OR UI_NAME LIKE CONCAT('%',?,'%')";
+				sql += " AND UI_NAME LIKE CONCAT('%',?,'%')";
 			} else if ("3".equals(key)) {
-				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%')";
+				sql += " AND  BI_CONTENT LIKE CONCAT('%',?,'%')";
 			} else if ("4".equals(key)) {
-				sql += " OR BI_TITLE LIKE CONCAT('%',?,'%')";
-				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%')";
+				sql += " AND ( BI_TITLE LIKE CONCAT('%',?,'%')";
+				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%'))";
 			} else if ("5".equals(key)) {
-				sql += " OR UI_NAME LIKE CONCAT('%',?,'%')";
-				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%')";
+				sql += " AND ( UI_NAME LIKE CONCAT('%',?,'%')";
+				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%'))";
 			} else if ("6".equals(key)) {
-				sql += " OR BI_TITLE LIKE CONCAT('%',?,'%')";
-				sql += " OR UI_NAME LIKE CONCAT('%',?,'%')";
+				sql += " AND ( BI_TITLE LIKE CONCAT('%',?,'%')";
+				sql += " OR UI_NAME LIKE CONCAT('%',?,'%'))";
 			} else if ("7".equals(key)) {
-				sql += " OR BI_TITLE LIKE CONCAT('%',?,'%')";
+				sql += " AND ( BI_TITLE LIKE CONCAT('%',?,'%')";
 				sql += " OR UI_NAME LIKE CONCAT('%',?,'%')";
-				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%')";
+				sql += " OR BI_CONTENT LIKE CONCAT('%',?,'%'))";
 			}
 
 		}

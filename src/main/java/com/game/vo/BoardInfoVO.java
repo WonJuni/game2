@@ -5,12 +5,38 @@ public class BoardInfoVO {
 	private String biTitle;
 	private String biContent;
 	private int uiNum;
+	private String uiName;
 	private String credat;
 	private String cretim;
 	private String lmodat;
 	private String lmotim;
 	private String active;
+	private String searchType;
+	public String getUiName() {
+		return uiName;
+	}
 
+	public void setUiName(String uiName) {
+		this.uiName = uiName;
+	}
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getSearchStr() {
+		return searchStr;
+	}
+
+	public void setSearchStr(String searchStr) {
+		this.searchStr = searchStr;
+	}
+
+	private String searchStr;
+	
 	public int getBiNum() {
 		return biNum;
 	}
@@ -86,8 +112,9 @@ public class BoardInfoVO {
 	@Override
 	public String toString() {
 		return "BoardInfoVO [biNum=" + biNum + ", biTitle=" + biTitle + ", biContent=" + biContent + ", uiNum=" + uiNum
-				+ ", credat=" + credat + ", cretim=" + cretim + ", lmodat=" + lmodat + ", lmotim=" + lmotim
-				+ ", active=" + active + "]";
+				+ ", uiName=" + uiName + ", credat=" + credat + ", cretim=" + cretim + ", lmodat=" + lmodat
+				+ ", lmotim=" + lmotim + ", active=" + active + ", searchType=" + searchType + ", searchStr="
+				+ searchStr + "]";
 	}
 	
 	public static void main(String[] args) {

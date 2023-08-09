@@ -1,6 +1,7 @@
 package com.game.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,24 +15,25 @@ import javax.servlet.http.HttpSession;
 import com.game.common.CommonView;
 import com.game.service.UserInfoService;
 import com.game.service.impl.UserInfoSeviceImpl;
+import com.google.gson.Gson;
 
 @WebServlet("/user-info/*")
 public class UserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final UserInfoService USER_INFO_SERVICE = new UserInfoSeviceImpl();
+	private Gson gson = new Gson();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		String cmd = CommonView.getCmd(request);
-		System.out.println(cmd);
-		if ("login".equals(cmd)) {
-
-		}else if ("logout".equals(cmd)) {
-			HttpSession session = request.getSession();
-			session.invalidate();
-		}else if ("insert".equals(cmd)) {
-			
+		String json = "";
+		if ("list".equals(cmd)) {
+			json = gson.toJson(USER_INFO_SERVICE.selectUserInfoList(null));
+		}else if ("view".equals(cmd) || "update".equals(cmd)) {
+	
 		}
-		CommonView.forward(request, response);
+		response.setContentType("application/json;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
